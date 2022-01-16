@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Northwind.Entity.Models
 {
-    public partial class Customer:EntityBase
+    public partial class Customer:EntityBase 
     {
         public Customer()
         {

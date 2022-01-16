@@ -10,7 +10,7 @@ using Northwind.Dal.Abstract.IGenericRepository;
 
 namespace Northwind.Dal.Concrete.EntityFramework.GenericRepository
 {
-    public class EfGenericRepository<T> : IGenericRepository<T> where T : EntityBase
+    public class EfGenericRepository<T> : IGenericRepository<T> where T : EntityBase 
     {
         
 
@@ -54,6 +54,11 @@ namespace Northwind.Dal.Concrete.EntityFramework.GenericRepository
         }
 
         public T Find(int id)
+        {
+            return set.Find(id);
+        }
+
+        public T Find(string id)
         {
             return set.Find(id);
         }

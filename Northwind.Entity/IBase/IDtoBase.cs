@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Entity.IBase
 {
-    public class IDtoBase
+    public class IDtoBase:IEntityBase
     {
     }
 }

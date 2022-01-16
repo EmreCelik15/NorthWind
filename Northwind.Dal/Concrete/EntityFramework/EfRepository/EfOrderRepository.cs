@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Northwind.Dal.Abstract.IRepository;
 using Northwind.Dal.Concrete.EntityFramework.GenericRepository;
+using Northwind.Entity.Dto;
 using Northwind.Entity.Models;
 using System;
 using System.Collections.Generic;

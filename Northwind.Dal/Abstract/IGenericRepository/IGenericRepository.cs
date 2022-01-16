@@ -7,13 +7,14 @@ using System.Linq.Expressions;
 namespace Northwind.Dal.Abstract.IGenericRepository
 {
   
-        public interface IGenericRepository<T> where T : IEntityBase
+        public interface IGenericRepository<T> where T : IEntityBase 
         {
             T Add(T entity);
             bool Delete(int id);
             bool Delete(T entity);
             T Update(T entity);
             T Find(int id);
+            T Find(string id);
             List<T> GetAll();
             IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
         }

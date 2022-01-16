@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Northwind.Entity.Models
 {
-    public partial class Order:EntityBase
+    public partial class Order: EntityBase
     {
         public Order()
         {

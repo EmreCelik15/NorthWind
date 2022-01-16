@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Northwind.Entity.Dto;
 using Northwind.Entity.Models;
 
 #nullable disable
@@ -13,8 +14,7 @@ namespace Northwind.Dal.Concrete.EntityFramework
         {
         }
 
-        public NORTHWNDContext(DbContextOptions<NORTHWNDContext> options)
-            : base(options)
+        public NORTHWNDContext(DbContextOptions<NORTHWNDContext> options) : base(options)
         {
         }
 
@@ -52,7 +52,7 @@ namespace Northwind.Dal.Concrete.EntityFramework
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=NORTHWND;Trusted_Connection=True;");
             }
         }

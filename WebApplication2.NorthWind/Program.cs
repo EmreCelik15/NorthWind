@@ -11,6 +11,7 @@ namespace WebApplication2.NorthWind
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
