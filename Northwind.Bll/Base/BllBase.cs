@@ -35,7 +35,7 @@ namespace Northwind.Bll.Base
             try
             {
                 var resolvedResult = "";
-                var TResult = repository.Add(ObjectMapper.ObjectMapper.Mapper.Map<T>(entity));
+                var TResult = repository.Add(ObjectMapper.Mapper.Map<T>(entity));
                 resolvedResult = String.Join(',', TResult.GetType().GetProperties().Select(x => $" - {x.Name} : {x.GetValue(TResult) ?? ""} - "));
 
                 if (saveChanges)
@@ -45,7 +45,7 @@ namespace Northwind.Bll.Base
                 {
                     StatusCode = StatusCodes.Status200OK,
                     Message = "Succuess",
-                    Data = ObjectMapper.ObjectMapper.Mapper.Map<T, TDto>(TResult)
+                    Data = ObjectMapper.Mapper.Map<T, TDto>(TResult)
                 };
             }
             catch (Exception ex)
@@ -114,7 +114,7 @@ namespace Northwind.Bll.Base
                 {
                     StatusCode = StatusCodes.Status200OK,
                     Message = "Success",
-                    Data = ObjectMapper.ObjectMapper.Mapper.Map<T, TDto>(repository.Find(id))
+                    Data = ObjectMapper.Mapper.Map<T, TDto>(repository.Find(id))
                 };
             }
             catch (Exception ex)
@@ -133,7 +133,7 @@ namespace Northwind.Bll.Base
             try
             {
                 List<T> list = repository.GetAll();
-                var dtoList = list.Select(x => ObjectMapper.ObjectMapper.Mapper.Map<TDto>(x)).ToList();
+                var dtoList = list.Select(x =>ObjectMapper.Mapper.Map<TDto>(x)).ToList();
 
                 var response = new ResponseBase<List<TDto>>
                 {
@@ -160,7 +160,7 @@ namespace Northwind.Bll.Base
             try
             {
                 List<T> list = repository.GetAll(expression).ToList();
-                var dtoList = list.Select(x => ObjectMapper.ObjectMapper.Mapper.Map<TDto>(x)).ToList();
+                var dtoList = list.Select(x => ObjectMapper.Mapper.Map<TDto>(x)).ToList();
 
                 var response = new ResponseBase<List<TDto>>
                 {
@@ -209,7 +209,7 @@ namespace Northwind.Bll.Base
                 {
                     StatusCode = StatusCodes.Status200OK,
                     Message = "Success",
-                    Data = ObjectMapper.ObjectMapper.Mapper.Map<T, TDto>(repository.Find(id))
+                    Data = ObjectMapper.Mapper.Map<T, TDto>(repository.Find(id))
                 };
             }
             catch (Exception ex)

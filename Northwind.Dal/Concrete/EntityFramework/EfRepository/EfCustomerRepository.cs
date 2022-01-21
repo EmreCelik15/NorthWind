@@ -21,5 +21,9 @@ namespace Northwind.Dal.Concrete.EntityFramework.EfRepository
         {
             return set.AsQueryable();
         }
+        public Customer Find(string id)
+        {
+            return set.Find(id);
+        }
     }
 }

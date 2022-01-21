@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 
 namespace Northwind.InterfaceLayer.Abstract
 {
-    public interface ICustomerService:IGenericService<Customer,DtoCustomer>
+    public interface IUserService : IGenericService<User, DtoUser>
     {
-        IQueryable CustomerReport();
-        
+        IResponseBase<DtoUserToken> Login(DtoLogin login);
     }
 }

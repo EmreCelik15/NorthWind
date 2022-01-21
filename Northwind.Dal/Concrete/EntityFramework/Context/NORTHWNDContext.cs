@@ -47,6 +47,7 @@ namespace Northwind.Dal.Concrete.EntityFramework
         public virtual DbSet<SummaryOfSalesByYear> SummaryOfSalesByYears { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Territory> Territories { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -99,6 +100,11 @@ namespace Northwind.Dal.Concrete.EntityFramework
                 entity.Property(e => e.Description).HasColumnType("ntext");
 
                 entity.Property(e => e.Picture).HasColumnType("image");
+            });
+            
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.UserID).HasColumnName("UserId");
             });
 
             modelBuilder.Entity<CategorySalesFor1997>(entity =>

@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Northwind.Bll;
 using Northwind.Dal.Abstract;
@@ -22,6 +24,7 @@ using Northwind.InterfaceLayer.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace WebApplication2.NorthWind
@@ -38,14 +41,36 @@ namespace WebApplication2.NorthWind
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(cfg=>
+                {
+                    cfg.SaveToken = true;
+                    cfg.RequireHttpsMetadata = false;
+                    cfg.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        RoleClaimType="Roles",
+                        ValidIssuer = Configuration["Tokens:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["Tokens:Issuer"],
+                        RequireSignedTokens = true,
+                        RequireExpirationTime = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+
+                        
+                    };
+                }
+            );
             services.AddControllers();
             services.AddSingleton<ICustomerRepository, EfCustomerRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ICustomerService, CustomerService>();
             services.AddSingleton<IGenericRepository<Customer>, EfGenericRepository<Customer>>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<DbContext, NORTHWNDContext>();
+            services.AddSingleton<IUserService, UserManager>();
             services.AddAutoMapper(typeof(MappingProfile));
+            
    
             services.AddSwaggerGen(c =>
             {

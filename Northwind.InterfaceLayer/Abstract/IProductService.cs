@@ -1,5 +1,4 @@
 ﻿using Northwind.Entity.Dto;
-using Northwind.Entity.IBase;
 using Northwind.Entity.Models;
 using Northwind.InterfaceLayer.IGenericService;
 using System;
@@ -10,9 +9,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.InterfaceLayer.Abstract
 {
-    public interface ICustomerService:IGenericService<Customer,DtoCustomer>
+    public interface IProductService : IGenericService<Product, DtoProduct>
     {
-        IQueryable CustomerReport();
-        
     }
 }

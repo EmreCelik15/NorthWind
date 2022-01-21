@@ -15,5 +15,6 @@ namespace Northwind.Dal.Abstract.IRepository
         //TODO : örnek olması için deneme amaçlı metod.
         //TODO : bu sınıfa generic repositoryden kalıtım vermemiz gerekmez miydi?
         IQueryable CustomerReport();
+        
     }
 }
