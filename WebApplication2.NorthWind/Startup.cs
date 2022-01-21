@@ -63,8 +63,52 @@ namespace WebApplication2.NorthWind
             );
             services.AddControllers();
             services.AddSingleton<ICustomerRepository, EfCustomerRepository>();
-            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ICustomerService, CustomerService>();
+
+            services.AddSingleton<ICategoryRepository, EfCategoryRepository>();
+            services.AddSingleton<ICategoryService, CategoryService>();
+
+            services.AddSingleton<ICustomerCustomerDemoRepository, EfCustomerCustomerDemoRepository>();
+            services.AddSingleton<ICustomerCustomerDemoService, CustomerCustomerDemoService>();
+
+            services.AddSingleton<ICustomerDemographicRepository, EfCustomerDemographicRepository>();
+            services.AddSingleton<ICustomerDemographicService, CustomerDemographicService>();
+
+            services.AddSingleton<IEmployeeRepository, EfEmployeeRepository>();
+            services.AddSingleton<IEmployeeService, EmployeeService>();
+
+            services.AddSingleton<IEmployeeTerritoryRepository, EfEmployeeTerritoryRepository>();
+            services.AddSingleton<IEmployeeTerritoryService, EmployeeTerritoryService>();
+
+            services.AddSingleton<IOrderDetailRepository, EfOrderDetailRepository>();
+            services.AddSingleton<IOrderDetailService, OrderDetailService>();
+
+            services.AddSingleton<IOrderRepository, EfOrderRepository>();
+            services.AddSingleton<IOrderService, OrderService>();
+
+            services.AddSingleton<IProductRepository, EfProductRepository>();
+            services.AddSingleton<IProductService, ProductService>();
+
+            services.AddSingleton<IOrderRepository, EfOrderRepository>();
+            services.AddSingleton<IOrderService, OrderService>();
+
+            services.AddSingleton<IProductRepository, EfProductRepository>();
+            services.AddSingleton<IProductService, ProductService>();
+
+            services.AddSingleton<IRegionRepository, EfRegionRepository>();
+            services.AddSingleton<IRegionService, RegionService>();
+
+            services.AddSingleton<IShipperRepository, EfShipperRepository>();
+            services.AddSingleton<IShipperService, ShipperService>();
+
+            services.AddSingleton<ISupplierRepository, EfSupplierRepository>();
+            services.AddSingleton<ISupplierService, SupplierService>();
+
+            services.AddSingleton<ITerritoryRepository, EfTerritoryRepository>();
+            services.AddSingleton<ITerritoryService, TerritoryService>();
+
+
+            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IGenericRepository<Customer>, EfGenericRepository<Customer>>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<DbContext, NORTHWNDContext>();
