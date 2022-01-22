@@ -61,5 +61,27 @@ namespace Northwind.Bll
             }
 
         }
+
+        public IResponseBase<DtoUser> Register(DtoRegisterUser user, string password)
+        {
+            var newUser = new User();
+            newUser = ObjectMapper.Mapper.Map<User>(user);
+            var password2=HashingHelper.MD5Hash(password);
+
+            newUser.UserName = user.UserName;
+            newUser.UserLastName = user.UserLastName;
+            newUser.UserCode = user.UserCode;
+            newUser.Password = password2;
+            repository.Add(newUser);
+            
+            return new ResponseBase<DtoUser>
+            {
+                Message = "Registering is success!",
+                StatusCode = StatusCodes.Status200OK,
+                Data = null
+            };
+
+
+        }
     }
 }

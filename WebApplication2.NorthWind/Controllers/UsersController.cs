@@ -24,7 +24,7 @@ namespace Nortwind.WebApi.Controllers
         }
 
         [HttpPost("/login")]
-        
+
         public IResponseBase<DtoUserToken> Login(DtoLogin login)
         {
             try
@@ -34,6 +34,26 @@ namespace Nortwind.WebApi.Controllers
             catch (Exception ex)
             {
                 return new ResponseBase<DtoUserToken>
+                {
+                    Message = $"Error:{ex.Message}",
+                    StatusCode = StatusCodes.Status500InternalServerError,
+                    Data = null,
+                };
+                throw;
+            }
+        }
+
+
+        [HttpPost("register")]
+        public IResponseBase<DtoUser> Register(DtoRegisterUser user)
+        {
+            try
+            {
+                return userService.Register(user, user.Password);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseBase<DtoUser>
                 {
                     Message = $"Error:{ex.Message}",
                     StatusCode = StatusCodes.Status500InternalServerError,

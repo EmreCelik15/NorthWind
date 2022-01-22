@@ -44,7 +44,7 @@ namespace Northwind.Bll.Base
                 return new ResponseBase<TDto>
                 {
                     StatusCode = StatusCodes.Status200OK,
-                    Message = "Succuess",
+                    Message = "Success",
                     Data = ObjectMapper.Mapper.Map<T, TDto>(TResult)
                 };
             }

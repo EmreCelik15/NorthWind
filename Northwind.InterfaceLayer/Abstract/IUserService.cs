@@ -13,5 +13,6 @@ namespace Northwind.InterfaceLayer.Abstract
     public interface IUserService : IGenericService<User, DtoUser>
     {
         IResponseBase<DtoUserToken> Login(DtoLogin login);
+        IResponseBase<DtoUser> Register(DtoRegisterUser user,string password);
     }
 }

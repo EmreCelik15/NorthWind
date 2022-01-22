@@ -35,7 +35,12 @@ namespace Northwind.Dal.Concrete.EntityFramework.GenericRepository
         {
             context.Entry(entity).State = EntityState.Added;
             set.Add(entity);
+            context.SaveChanges();
             return entity;
+            //var addedEntity = context.Entry(entity);
+            //addedEntity.State = EntityState.Added;
+            //context.SaveChanges();
+            //return entity;
         }
 
         public bool Delete(int id)
